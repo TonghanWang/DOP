@@ -1,5 +1,7 @@
 == The default hyper-parameter setting was fine tuned with a parallel runner using 4 parallel environments. The latest version of PyMARL uses an episode runner. Current hyper-parameters may be unstable with this runner. ==
 
+<span style="color:blue"> *The default hyper-parameter setting was fine tuned with a parallel runner using 4 parallel environments. The latest version of PyMARL uses an episode runner. Current hyper-parameters may be unstable with this runner.* </span>
+
 # DOP: Off-Policy Multi-Agent Decomposed Policy Gradients
 
 ## Note
