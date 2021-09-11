@@ -193,12 +193,13 @@ def run_sequential(args, logger):
 
         if buffer.can_sample(args.batch_size) and off_buffer.can_sample(args.off_batch_size):
             #train critic normall
-            uni_episode_sample = buffer.uni_sample(args.batch_size)
-            off_episode_sample = off_buffer.uni_sample(args.off_batch_size)
-            max_ep_t = max(uni_episode_sample.max_t_filled(), off_episode_sample.max_t_filled())
-            uni_episode_sample = process_batch(uni_episode_sample[:, :max_ep_t], args)
-            off_episode_sample = process_batch(off_episode_sample[:, :max_ep_t], args)
-            learner.train_critic(uni_episode_sample, best_batch=off_episode_sample, log=running_log)
+            for _ in range(2):
+                uni_episode_sample = buffer.uni_sample(args.batch_size)
+                off_episode_sample = off_buffer.uni_sample(args.off_batch_size)
+                max_ep_t = max(uni_episode_sample.max_t_filled(), off_episode_sample.max_t_filled())
+                uni_episode_sample = process_batch(uni_episode_sample[:, :max_ep_t], args)
+                off_episode_sample = process_batch(off_episode_sample[:, :max_ep_t], args)
+                learner.train_critic(uni_episode_sample, best_batch=off_episode_sample, log=running_log)
 
             #train actor
             episode_sample = buffer.sample_latest(args.batch_size)
