@@ -1,4 +1,5 @@
 * Results reported in the paper can be reproduced by setting test_greedy to True, which uses argmax to select actions when testing. We have updated the default settings in our codebase.*
+
 <span style="color:red"> *The default hyper-parameter setting was fine tuned with a parallel runner using 4 parallel environments. The latest version of PyMARL uses an episode runner. Current hyper-parameters may be unstable with this runner.* </span>
 
 # DOP: Off-Policy Multi-Agent Decomposed Policy Gradients
