@@ -26,10 +26,10 @@ class MultinomialActionSelector():
         else:
             picked_actions = Categorical(masked_policies).sample().long()
 
-            random_numbers = th.rand_like(agent_inputs[:, :, 0])
-            pick_random = (random_numbers < self.epsilon).long()
-            random_actions = Categorical(avail_actions.float()).sample().long()
-            picked_actions = pick_random * random_actions + (1 - pick_random) * picked_actions
+            # random_numbers = th.rand_like(agent_inputs[:, :, 0])
+            # pick_random = (random_numbers < self.epsilon).long()
+            # random_actions = Categorical(avail_actions.float()).sample().long()
+            # picked_actions = pick_random * random_actions + (1 - pick_random) * picked_actions
 
         if not (th.gather(avail_actions, dim=2, index=picked_actions.unsqueeze(2)) > 0.99).all():
             return self.select_action(agent_inputs, avail_actions, t_env, test_mode)
